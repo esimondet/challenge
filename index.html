@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <heading class="flex-row"> 
+    <heading class="flex-row">
         <a href="./high-scores.html" class="scores-link">View high scores</a>
         <div>
             <a class="timer">Time: </a>
@@ -23,18 +23,18 @@
         <div class="quiz-start show" id="startScreen">
             <h1>The Turning Quiz</h1>
             <div>
-            <br/>
-            <img src="./assets/images/Alan-Turing.jpg">
-            <p>
-                In this quiz you will answer questions about an influential contributor 
-                to early computing, Alan Turing. You’ll have 75 seconds to do so 
-                and there is a 10 second penalty for wrong answers! The quiz is over if 
-                no time remains. Good luck!
-            </p>
-            <div class="container">
-            <button class="btn start-btn" id="start">Start Quiz!</button>
+                <br />
+                <img src="./assets/images/Alan-Turing.jpg">
+                <p>
+                    In this quiz you will answer questions about an influential contributor
+                    to early computing, Alan Turing. You’ll have 75 seconds to do so
+                    and there is a 10 second penalty for wrong answers! The quiz is over if
+                    no time remains. Good luck!
+                </p>
+                <div class="container">
+                    <button class="btn start-btn" id="start">Start Quiz!</button>
+                </div>
             </div>
-        </div>
         </div>
         <div class="quiz-questions hide" id="questionScreen">
             <h1 id="question"></h1>
@@ -43,11 +43,17 @@
                 <li><button class="btn" id="answerTwo"></button></li>
                 <li><button class="btn" id="answerThree"></button></li>
                 <li><button class="btn" id="answerFour"></button></li>
-        </ul>
+            </ul>
             <h4 class="hide" id="wrongAnswer">-10 seconds, try again!</h4>
         </div>
         <div class="quiz-result hide" id="resultScreen">
             <h1 id="quizOver"></h1>
+            <h2 id="score"></h2>
+            <div>
+                <label for="initials">Enter your initials into the scoreboard!</label>
+                <input type="text" placeholder="Your Initials" id="initials" name="initials" class="form-input" />
+                <a href="./high-scores.html" class="btn" id="initialsBtn">Submit</a>
+            </div>
         </div>
 
     </section>

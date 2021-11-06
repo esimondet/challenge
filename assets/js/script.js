@@ -1,19 +1,23 @@
-var time = document.querySelector("#time")
-var startScreen = document.querySelector("#startScreen")
-var questionScreen = document.querySelector("#questionScreen")
-var resultScreen = document.querySelector("#resultScreen")
-var quizOver = document.querySelector("#quizOver")
-var wrongAnswer = document.querySelector("#wrongAnswer")
-var question = document.querySelector("#question")
+var time = document.querySelector("#time");
+var startScreen = document.querySelector("#startScreen");
+var questionScreen = document.querySelector("#questionScreen");
+var resultScreen = document.querySelector("#resultScreen");
+var quizOver = document.querySelector("#quizOver");
+var score = document.querySelector("#score");
+var wrongAnswer = document.querySelector("#wrongAnswer");
+var question = document.querySelector("#question");
 var startBtn = document.querySelector("#start");
 var answerOne = document.querySelector("#answerOne");
 var answerTwo = document.querySelector("#answerTwo");
 var answerThree = document.querySelector("#answerThree");
 var answerFour = document.querySelector("#answerFour");
+var initialsBtn = document.querySelector("#initialsBtn")
+
 var currentQuestionIndex = 0;
+var timerInterval = null;
+var timeRemaining = 75;
 
 var timer = function () {
-    var timeRemaining = 75;
     time.innerHTML = timeRemaining;
 
     var timerOver = function () {
@@ -21,9 +25,10 @@ var timer = function () {
         timeRemaining = 1;
     }
 
-    setInterval(function () {
+    timerInterval = setInterval(function () {
         timeRemaining--;
         time.innerHTML = timeRemaining;
+
         if (timeRemaining < 1) {
             questionScreen.classList.remove("show");
             questionScreen.classList.add("hide");
@@ -32,9 +37,15 @@ var timer = function () {
             document.getElementById("quizOver").innerHTML = "Time Limit Reached!";
 
             timerOver();
-            return timeRemaining;
         }
     }, 1000);
+}
+
+var quizScore = function () {
+    time.innerHTML = timeRemaining;
+    var score = timeRemaining;
+    document.getElementById("score").innerHTML = "Good work! Your score is " + score + ".";
+    clearInterval(timerInterval);
 }
 
 var startQuiz = function () {
@@ -70,6 +81,7 @@ var checkAnswer = function (answerIndex) {
         resultScreen.classList.remove("hide");
         resultScreen.classList.add("show");
         document.getElementById("quizOver").innerHTML = "Quiz Completed!";
+        quizScore();
     }
 
 }
