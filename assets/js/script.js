@@ -1,6 +1,8 @@
+var time = document.querySelector("#time")
 var startScreen = document.querySelector("#startScreen")
 var questionScreen = document.querySelector("#questionScreen")
 var resultScreen = document.querySelector("#resultScreen")
+var quizOver = document.querySelector("#quizOver")
 var wrongAnswer = document.querySelector("#wrongAnswer")
 var question = document.querySelector("#question")
 var startBtn = document.querySelector("#start");
@@ -10,11 +12,37 @@ var answerThree = document.querySelector("#answerThree");
 var answerFour = document.querySelector("#answerFour");
 var currentQuestionIndex = 0;
 
+var timer = function () {
+    var timeRemaining = 75;
+    time.innerHTML = timeRemaining;
+
+    var timerOver = function () {
+        clearInterval();
+        timeRemaining = 1;
+    }
+
+    setInterval(function () {
+        timeRemaining--;
+        time.innerHTML = timeRemaining;
+        if (timeRemaining < 1) {
+            questionScreen.classList.remove("show");
+            questionScreen.classList.add("hide");
+            resultScreen.classList.remove("hide");
+            resultScreen.classList.add("show");
+            document.getElementById("quizOver").innerHTML = "Time Limit Reached!";
+
+            timerOver();
+            return timeRemaining;
+        }
+    }, 1000);
+}
+
 var startQuiz = function () {
     startScreen.classList.remove("show");
     startScreen.classList.add("hide");
     questionScreen.classList.remove("hide");
     questionScreen.classList.add("show");
+    timer();
     setUp(currentQuestionIndex);
 }
 
@@ -41,6 +69,7 @@ var checkAnswer = function (answerIndex) {
         questionScreen.classList.add("hide");
         resultScreen.classList.remove("hide");
         resultScreen.classList.add("show");
+        document.getElementById("quizOver").innerHTML = "Quiz Completed!";
     }
 
 }

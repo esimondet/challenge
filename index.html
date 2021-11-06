@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="icon" href="./assets/images/favicon.ico">
     <title>The Turing Quiz!</title>
 </head>
 
@@ -14,7 +15,7 @@
         <a href="./high-scores.html" class="scores-link">View high scores</a>
         <div>
             <a class="timer">Time: </a>
-            <h3></h3>
+            <h3 id="time"></h3>
         </div>
     </heading>
 
@@ -46,7 +47,7 @@
             <h4 class="hide" id="wrongAnswer">-10 seconds, try again!</h4>
         </div>
         <div class="quiz-result hide" id="resultScreen">
-            <h1>Good work!</h1>
+            <h1 id="quizOver"></h1>
         </div>
 
     </section>
