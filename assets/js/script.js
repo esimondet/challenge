@@ -1,24 +1,49 @@
 var startScreen = document.querySelector("#startScreen")
 var questionScreen = document.querySelector("#questionScreen")
+var resultScreen = document.querySelector("#resultScreen")
+var wrongAnswer = document.querySelector("#wrongAnswer")
+var question = document.querySelector("#question")
+var startBtn = document.querySelector("#start");
+var answerOne = document.querySelector("#answerOne");
+var answerTwo = document.querySelector("#answerTwo");
+var answerThree = document.querySelector("#answerThree");
+var answerFour = document.querySelector("#answerFour");
+var currentQuestionIndex = 0;
 
 var startQuiz = function () {
     startScreen.classList.remove("show");
     startScreen.classList.add("hide");
     questionScreen.classList.remove("hide");
     questionScreen.classList.add("show");
+    setUp(currentQuestionIndex);
 }
 
-var startBtn = document.querySelector("#start");
-var answerOne = document.querySelector("#answerOne");
-var answerTwo = document.querySelector("#answerTwo");
-var answerThree = document.querySelector("#answerThree");
-var answerFour = document.querySelector("#answerFour");
+var setUp = function (questionIndex) {
+    question.innerHTML = quizQuestions.questions[questionIndex].questionText;
+    answerOne.innerHTML = quizQuestions.questions[questionIndex].answers[0].answerText;
+    answerTwo.innerHTML = quizQuestions.questions[questionIndex].answers[1].answerText;
+    answerThree.innerHTML = quizQuestions.questions[questionIndex].answers[2].answerText;
+    answerFour.innerHTML = quizQuestions.questions[questionIndex].answers[3].answerText;
+}
 
-startBtn.addEventListener("click", startQuiz);
-answerOne.addEventListener("click", null);
-answerTwo.addEventListener("click", null);
-answerThree.addEventListener("click", null);
-answerFour.addEventListener("click", null);
+var checkAnswer = function (answerIndex) {
+    var isCorrect = quizQuestions.questions[currentQuestionIndex].answers[answerIndex].isCorrect;
+    if (isCorrect && currentQuestionIndex < 4) {
+        currentQuestionIndex++;
+        wrongAnswer.classList.remove("show");
+        wrongAnswer.classList.add("hide");
+        setUp(currentQuestionIndex);
+    } else if (!isCorrect) {
+        wrongAnswer.classList.remove("hide");
+        wrongAnswer.classList.add("show");
+    } else {
+        questionScreen.classList.remove("show");
+        questionScreen.classList.add("hide");
+        resultScreen.classList.remove("hide");
+        resultScreen.classList.add("show");
+    }
+
+}
 
 var quizQuestions = {
     "questions": [{
@@ -98,3 +123,9 @@ var quizQuestions = {
         }]
     }]
 }
+
+startBtn.addEventListener("click", startQuiz);
+answerOne.addEventListener("click", function () { checkAnswer(0) });
+answerTwo.addEventListener("click", function () { checkAnswer(1) });
+answerThree.addEventListener("click", function () { checkAnswer(2) });
+answerFour.addEventListener("click", function () { checkAnswer(3) });

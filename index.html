@@ -27,7 +27,8 @@
             <p>
                 In this quiz you will answer questions about an influential contributor 
                 to early computing, Alan Turing. You’ll have 75 seconds to do so 
-                and there is a 10 second penalty for wrong answers! Good luck!
+                and there is a 10 second penalty for wrong answers! The quiz is over if 
+                no time remains. Good luck!
             </p>
             <div class="container">
             <button class="btn start-btn" id="start">Start Quiz!</button>
@@ -35,15 +36,16 @@
         </div>
         </div>
         <div class="quiz-questions hide" id="questionScreen">
-            <h1>1. Before joining the WWII war effort, Alan Turing received his PhD from Princeton in the field of ____.</h1>
+            <h1 id="question"></h1>
             <ul>
-                <li><button class="btn" id="answerOne">a. Cryptology</button></li>
-                <li><button class="btn" id="answerTwo">b. Mathematics</button></li>
-                <li><button class="btn" id="answerThree">c. Computer Science</button></li>
-                <li><button class="btn" id="answerFour">d. Theology</button></li>
+                <li><button class="btn" id="answerOne"></button></li>
+                <li><button class="btn" id="answerTwo"></button></li>
+                <li><button class="btn" id="answerThree"></button></li>
+                <li><button class="btn" id="answerFour"></button></li>
         </ul>
+            <h4 class="hide" id="wrongAnswer">-10 seconds, try again!</h4>
         </div>
-        <div class="quiz-result hide">
+        <div class="quiz-result hide" id="resultScreen">
             <h1>Good work!</h1>
         </div>
 
