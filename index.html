@@ -19,7 +19,7 @@
     </heading>
 
     <section class="flex-row quiz-box">
-        <div class="quiz-start show">
+        <div class="quiz-start show" id="startScreen">
             <h1>The Turning Quiz</h1>
             <div>
             <br/>
@@ -30,19 +30,21 @@
                 and there is a 10 second penalty for wrong answers! Good luck!
             </p>
             <div class="container">
-            <button class="btn start-btn">Start Quiz!</button>
+            <button class="btn start-btn" id="start">Start Quiz!</button>
             </div>
         </div>
         </div>
-        <div class="quiz-questions hide">
-            <h1>1. Before joining the WWII war effort, Alan Turing received his PhD from Princeton in ____.</h1>
-            <button class="answer-btn">a. Cryptology</button>
-            <button class="answer-btn">b. Mathematics</button>
-            <button class="answer-btn">c. Computer Science</button>
-            <button class="answer-btn">d. Theology</button>
+        <div class="quiz-questions hide" id="questionScreen">
+            <h1>1. Before joining the WWII war effort, Alan Turing received his PhD from Princeton in the field of ____.</h1>
+            <ul>
+                <li><button class="btn" id="answerOne">a. Cryptology</button></li>
+                <li><button class="btn" id="answerTwo">b. Mathematics</button></li>
+                <li><button class="btn" id="answerThree">c. Computer Science</button></li>
+                <li><button class="btn" id="answerFour">d. Theology</button></li>
+        </ul>
         </div>
-        <div class="quiz-result">
-
+        <div class="quiz-result hide">
+            <h1>Good work!</h1>
         </div>
 
     </section>

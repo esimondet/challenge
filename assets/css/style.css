@@ -97,7 +97,7 @@ heading {
 }
 
 .quiz-box h1 {
-    padding-bottom: 30px;
+    padding-bottom: 10px;
     text-align: center;
 }
 
@@ -121,4 +121,9 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+ul {
+    list-style-type: none;
+    margin: 80px;
 }
