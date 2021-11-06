@@ -10,13 +10,16 @@
 </head>
 
 <body>
-    <heading>
-        <a href="./high-scores.html">View high scores</a>
-        <a class="timer">Time: </a>
+    <heading class="flex-row"> 
+        <a href="./high-scores.html" class="scores-link">View high scores</a>
+        <div>
+            <a class="timer">Time: </a>
+            <h3></h3>
+        </div>
     </heading>
 
-    <section>
-        <div>
+    <section class="flex-row">
+        <div class="quiz-start show">
             <h1>The Turning Quiz</h1>
             <p>
                 In this quiz you will answer questions about Alan Turing who was one of the 
@@ -25,6 +28,17 @@
             </p>
             <button class="start-btn">Start Quiz!</button>
         </div>
+        <div class="quiz-questions hide">
+            <h1>1. Before joining the WWII war effort, Alan Turing received his PhD from Princeton in ____.</h1>
+            <button class="answer-btn">a. Cryptology</button>
+            <button class="answer-btn">b. Mathematics</button>
+            <button class="answer-btn">c. Computer Science</button>
+            <button class="answer-btn">d. Theology</button>
+        </div>
+        <div class="quiz-result">
+
+        </div>
+
     </section>
 
     <script src="./assets/js/script.js"></script>
