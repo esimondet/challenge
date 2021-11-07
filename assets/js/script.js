@@ -17,8 +17,13 @@ var currentQuestionIndex = 0;
 var timerInterval = null;
 var timeRemaining = 75;
 
-var timer = function () {
-    time.innerHTML = timeRemaining;
+//function for tracking time
+
+var timer = function (seconds) {
+    timeRemaining = seconds;
+    time.innerHTML = seconds;
+
+    //if timer reaches 1, clear interval and decrement one final time
 
     var timerOver = function () {
         clearInterval();
@@ -41,6 +46,10 @@ var timer = function () {
     }, 1000);
 }
 
+// var scoreBoard = {
+//     name: 
+// }
+
 var quizScore = function () {
     time.innerHTML = timeRemaining;
     var score = timeRemaining;
@@ -48,15 +57,17 @@ var quizScore = function () {
     clearInterval(timerInterval);
 }
 
+//function to replace start screen with question screen, start timer, load first question
 var startQuiz = function () {
     startScreen.classList.remove("show");
     startScreen.classList.add("hide");
     questionScreen.classList.remove("hide");
     questionScreen.classList.add("show");
-    timer();
+    timer(75);
     setUp(currentQuestionIndex);
 }
 
+//display and track current question, load relevant answers 
 var setUp = function (questionIndex) {
     question.innerHTML = quizQuestions.questions[questionIndex].questionText;
     answerOne.innerHTML = quizQuestions.questions[questionIndex].answers[0].answerText;
@@ -67,14 +78,22 @@ var setUp = function (questionIndex) {
 
 var checkAnswer = function (answerIndex) {
     var isCorrect = quizQuestions.questions[currentQuestionIndex].answers[answerIndex].isCorrect;
+
+    //if correct, remove penalty message and incremant through quiz question json
     if (isCorrect && currentQuestionIndex < 4) {
         currentQuestionIndex++;
         wrongAnswer.classList.remove("show");
         wrongAnswer.classList.add("hide");
         setUp(currentQuestionIndex);
+
+        //if selection is incorrect, display penalty message and trigger function to subtract 10 seconds
     } else if (!isCorrect) {
         wrongAnswer.classList.remove("hide");
         wrongAnswer.classList.add("show");
+        clearInterval(timerInterval);
+        timer(timeRemaining - 10);
+
+        //if all quiz questions are answered correctly and time has not run down, show results screen and trigger score function
     } else {
         questionScreen.classList.remove("show");
         questionScreen.classList.add("hide");
@@ -90,7 +109,7 @@ var quizQuestions = {
     "questions": [{
         "questionText": "1. Before joining the WWII war effort, Alan Turing received his PhD from Princeton in the field of ____.",
         "answers": [{
-            "answerText": "Cyptology",
+            "answerText": "Cryptology",
             "isCorrect": false
         }, {
             "answerText": "Mathematics",
