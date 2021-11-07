@@ -22,7 +22,8 @@ var populateScoreboard = function () {
 }
 
 var clearScoreboard = function () {
-    storage.clear();
+    localStorage.clear();
+    location.reload();
 }
 
 clearBtn.addEventListener("click", clearScoreboard);
