@@ -11,6 +11,7 @@ var answerOne = document.querySelector("#answerOne");
 var answerTwo = document.querySelector("#answerTwo");
 var answerThree = document.querySelector("#answerThree");
 var answerFour = document.querySelector("#answerFour");
+var initials = document.querySelector("#initials");
 var initialsBtn = document.querySelector("#initialsBtn")
 
 var currentQuestionIndex = 0;
@@ -46,9 +47,21 @@ var timer = function (seconds) {
     }, 1000);
 }
 
-// var scoreBoard = {
-//     name: 
-// }
+var scoreEntry = function () {
+    if (initials.value.length < 1) {
+        alert("Please enter your initials!")
+    } else {
+        var currentScoreboard = localStorage.getItem("scoreboard");
+        if (currentScoreboard != null) {
+            jsonScoreboard = JSON.parse(currentScoreboard);
+        }
+
+        jsonScoreboard["scores"].push({ "initals": initials.value, "score": timeRemaining });
+
+        localStorage.setItem("scoreboard", JSON.stringify(jsonScoreboard));
+        window.location.href = "./high-scores.html"
+    }
+}
 
 var quizScore = function () {
     time.innerHTML = timeRemaining;
@@ -184,8 +197,13 @@ var quizQuestions = {
     }]
 }
 
+var jsonScoreboard = {
+    "scores": []
+}
+
 startBtn.addEventListener("click", startQuiz);
 answerOne.addEventListener("click", function () { checkAnswer(0) });
 answerTwo.addEventListener("click", function () { checkAnswer(1) });
 answerThree.addEventListener("click", function () { checkAnswer(2) });
 answerFour.addEventListener("click", function () { checkAnswer(3) });
+initialsBtn.addEventListener("click", scoreEntry);

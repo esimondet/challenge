@@ -9,13 +9,22 @@
     <title>The Turing Quiz- High Scores</title>
 </head>
 
-<body>
+<!-- when page loads, populate scoreboard -->
+
+<body onload="populateScoreboard()">
     <section class="quiz-box">
-    <h1>High Scores</h1>
-    <p>Placeholder text</p>
-    <div class="container">
-        <a href="./index.html" class="btn">Return to quiz</a>
-        <button class="btn">Clear High Scores</button>
-    </div>
+        <h1>High Scores</h1>
+        <table id="scoreboard">
+            <tr>
+                <th>Place</th>
+                <th>Initials</th>
+                <th>Score</th>
+            </tr>
+        </table>
+        <div class="container">
+            <a href="./index.html" class="btn">Return to quiz</a>
+            <button class="btn" id="clearBtn">Clear High Scores</button>
+        </div>
     </section>
+    <script src="./assets/js/scoreboardScript.js"></script>
 </body>
