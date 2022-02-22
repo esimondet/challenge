@@ -1,7 +1,7 @@
-# Challenge Four Code Quiz
+# The Turing Quiz!
 
 ## Purpose
-A quiz that demonstrates working knoweldge of JavaScript
+A quiz that demonstrates working knowledge of JavaScript
 
 ## Description
 In this project JavaScript techniques were taken to highlight proficiency, particularly through:
@@ -16,7 +16,7 @@ In this project JavaScript techniques were taken to highlight proficiency, parti
 * JavaScript
 
 ## Website
-You can view the live deployment [HERE](https://esimondet.github.io/challenge-four-code-quiz/)
+You can view the live deployment [HERE](https://esimondet.github.io/turing-quiz/)
 
 ## Screenshot of landing page
 ![Full page screenshot of the Password Generator](assets/images/full-page-screenshot.png)
